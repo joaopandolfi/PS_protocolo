@@ -1,0 +1,19 @@
+.removeButton {
+	width:80px;
+	height:20px;
+	background-color: rgb(107, 34, 34);
+	border-radius: 0px;
+	line-height: 20px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 10px;
+	font-weight: 300;
+	color: white;
+	margin: 0px;
+	float: right;
+	text-align: center;
+}
+
+.removeButton:hover {
+	background-color: rgba(213, 34, 34, 0.9);
+	cursor: pointer;
+}
