@@ -33,5 +33,14 @@
 			$sql = "DELETE FROM `process` WHERE id = $id";
 			if (!mysql_query($sql)){ return False; }else{ return True; }
 		}
+
+		function tramitProcess($idProcess,$idDepartment){
+			$date = date('Y-m-d H:i:s');
+			$query = "UPDATE `process` SET `department`= $idDepartment WHERE `id` = $idProcess";
+       		if (!mysql_query($query)) echo "<script>alert('falha na query');</script>";
+
+        	$query = "INSERT INTO history (idProcess,idDepartment,dateTime) VALUES ($idProcess,$idDepartment,'$date') ";
+        	if (!mysql_query($query)) echo "<script>alert('falha ao atualizar o historico');</script>";
+		}
 	}
 ?>

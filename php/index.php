@@ -7,11 +7,12 @@
     }
 
     if (isset($_POST['moveSubmit'])){
-        include "conect.php";
-        $d = $_POST['dept'];
-        $id = $_POST['id_process'];
-        $query = "UPDATE `process` SET `department`= $d WHERE `id` = $id";
-        if (!mysql_query($query, $con)) echo "<script>alert('falha na query');</script>";
+        include "conect.php";       
+        include "managePackage.php";
+        $aplProcess = new AplManageProcess;
+        $idDepartment = $_POST['dept'];
+        $idProcess = $_POST['id_process'];
+        $aplProcess->tramitProcess($idProcess,$idDepartment);
         mysql_close($con);
     }
 
