@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Biluga O.S 2.0</a>
+                <a class="navbar-brand" href="#">Protocool O.S 3.1</a>
             </div>
             <!-- /.navbar-header -->
 
