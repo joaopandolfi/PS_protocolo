@@ -54,63 +54,6 @@
 	<div class="col-sm-7"> <input READONLY type="date" class="form-control" value="'.$create_date.'">
 	</div> </div>';
 
-	if ($_SESSION['user_type'] != "Vizualizador"){
-		echo '	<div class="form-group"> <label class="control-label col-sm-2" for="date">Tramitar:</label>
-			  	<div class="col-sm-7"> <div class="input-group custom-search-form">';
-
-   		getSelect();
-
-    	echo ' 	<span class="input-group-btn"> <button class="btn btn-default" type="submit" name="moveSubmit">
-           		<i class="fa fa-envelope fa-fw"></i> Enviar </button> </span> </div> </div> </div> </form>';
-	}
-
-	//busca historico
-	$query = "SELECT h.dateTime, d.name AS name FROM history AS h
-		INNER JOIN department AS d ON h.idDepartment = d.id
-		WHERE h.idProcess = ".$id;
-	$consult = mysql_query($query, $con);
-
-	echo '
-
-		<div class="form-group"><label class="control-label col-sm-2" for="pwd"></label>
-		<div class="col-sm-7">
-	            <!-- table start -->
-			<div class="row">
-				<div class="col">
-					<div class="table-responsive">
-						<div class="panel panel-default">
-	                        <!-- Default panel contents -->
-	                        <div class="panel-heading">Histórico</div>
-	                        <table class="table table-condensed table-hover table-striped">
-	                            <thead>
-	                                <tr>
-	                                    <th>Departamento</th>
-	                                    <th>Data Hora</th>
-	                                </tr>
-	                            </thead>
-	                            <tbody id="table_content">';
-		 
-
-		  while($line = @mysql_fetch_array($consult))
-		  	echo "<tr style='cursor:pointer;'> <td>".$line["name"]."</td><td>".$line["dateTime"]."</td><td>".$line["dn"]."</td></tr>";
-	 
-
-	  echo '                   </tbody>
-	                        </table>
-	                    </div>
-	                </div>
-	                <!-- /.table-responsive -->
-	            </div>
-	            <!-- /.col-lg-4 (nested) -->
-	            <div class="col-lg-8">
-	                <div id="morris-bar-chart"></div>
-	            </div>
-	            <!-- /.col-lg-8 (nested) -->
-	        </div>
-		</div> </div>
-
-	';
-
 
     mysql_close($con);
 ?>

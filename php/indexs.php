@@ -1,4 +1,24 @@
+<?php
+    
+    session_start();
+    if(!(isset($_SESSION['user_id'])) || ($_SESSION['user_id'] == "false") || ($_SESSION['user_type'] != "Administrador")){
+        echo "<script>alert('Voce não esta logado ou não possui permissão para acessar esta pagina!');</script>";
+        echo "<script>location.href='../index.php';</script>";
+    }
 
+    if (isset($_POST['moveSubmit'])){
+        include "conect.php";       
+        include "managePackage.php";
+        $aplProcess = new AplManageProcess;
+        $idDepartment = $_POST['dept'];
+        $idProcess = $_POST['id_process'];
+        $aplProcess->tramitProcess($idProcess,$idDepartment);
+        mysql_close($con);
+    }
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,38 +31,15 @@
 
     <title>Protocolos</title>
 
-    <?php include "../php/imports.php"; ?>
+    <?php include "imports.php"; ?>
     <link href="../dist/css/customStyle.css" rel="stylesheet">
     <script src="../js/function.js"></script>
 
 </head>
 
-<body onload="">
-    
-    <div id="wrapper">
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Biluga O.S 2.0</a>
-            </div>
-            <!-- /.navbar-header -->
+<body onload="getList('')">
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li> <a href="../login.php"><i class="fa fa-tasks fa-fw"></i> Login</a> </li>
-                        
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-        </nav>
+    <?php include "optionMenu.php"; ?>
 
         <!-- Page Content -->
         <div id="page-wrapper">
@@ -52,7 +49,7 @@
                 	<form method="post" name="frm">
 	                	<div class="alert alert-success" role="alert">
 							<div class="input-group custom-search-form">
-	                        	<input onkeyup="publicSearch()" type="text" class="form-control" name="searchInput" placeholder="Search..." aria-controls="dataTables-example">
+	                        	<input onkeyup="search()" type="text" class="form-control" name="searchInput" placeholder="Search..." aria-controls="dataTables-example">
 	                            <span class="input-group-btn">
 	                                <button class="btn btn-default" type="submit" name="searchSubmit">
 	                                    <i class="fa fa-search"></i>

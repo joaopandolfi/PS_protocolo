@@ -58,6 +58,27 @@ function seeDetail(id){
 	xmlhttp.send();
 }
 
+function seePublicDetail(id){
+	var xmlhttp;
+
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}else{
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp.onreadystatechange = 
+
+	function(){
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById('content').innerHTML = xmlhttp.responseText;
+		}
+	}
+
+	xmlhttp.open("GET", "ajax/getProcessDetailPublic.php?id=" + id, true);
+	xmlhttp.send();
+}
+
 function getList(condition){
 	var xmlhttp;
 
@@ -77,6 +98,29 @@ function getList(condition){
 
 	xmlhttp.open("GET", "ajax/getProcessList.php?condition=" + condition, true);
 	xmlhttp.send();
+}
+
+function publicSearch(){
+
+	var xmlhttp;
+
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	}else{
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	xmlhttp.onreadystatechange = 
+
+	function(){
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById('table_content').innerHTML = xmlhttp.responseText;
+		}
+	}
+
+	xmlhttp.open("GET", "ajax/getProcessListPublic.php?condition=" + frm.searchInput.value, true);
+	xmlhttp.send();
+
 }
 
 function search(){

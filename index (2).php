@@ -11,9 +11,9 @@
 
     <title>Protocolos</title>
 
-    <?php include "../php/imports.php"; ?>
-    <link href="../dist/css/customStyle.css" rel="stylesheet">
-    <script src="../js/function.js"></script>
+    <?php include "php/imports.php"; ?>
+    <link href="dist/css/customStyle.css" rel="stylesheet">
+    <script src="js/function.js"></script>
 
 </head>
 
@@ -36,7 +36,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li> <a href="../login.php"><i class="fa fa-tasks fa-fw"></i> Login</a> </li>
+                        <li> <a href="login.php"><i class="fa fa-tasks fa-fw"></i> Login</a> </li>
                         
                     </ul>
                 </div>
@@ -52,7 +52,7 @@
                 	<form method="post" name="frm">
 	                	<div class="alert alert-success" role="alert">
 							<div class="input-group custom-search-form">
-	                        	<input onkeyup="publicSearch()" type="text" class="form-control" name="searchInput" placeholder="Search..." aria-controls="dataTables-example">
+	                        	<input onkeyup="search()" type="text" class="form-control" name="searchInput" placeholder="Search..." aria-controls="dataTables-example">
 	                            <span class="input-group-btn">
 	                                <button class="btn btn-default" type="submit" name="searchSubmit">
 	                                    <i class="fa fa-search"></i>
